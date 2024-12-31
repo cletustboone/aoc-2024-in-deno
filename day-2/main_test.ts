@@ -1,6 +1,5 @@
 import { assertEquals } from "@std/assert";
 import {
-  add,
   allDecreasing,
   allIncreasing,
   dampener,
