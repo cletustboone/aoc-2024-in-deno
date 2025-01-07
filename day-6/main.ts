@@ -51,14 +51,14 @@ export const traverse = (
     // Obstacle ahead?
     const nextChar = grid[nextX][nextY];
     if (nextChar === "#") {
-      const tipKey = [x, y, headingX, headingY].join(",")
+      const tipKey = [x, y, headingX, headingY].join(",");
       // Record position and orientation where direction changed
       // If you wind up in the same position in the same orientation,
       // you're in a loop.
       if (edgeTips.has(tipKey)) {
-        looping = true
+        looping = true;
       } else {
-        edgeTips.add(tipKey)
+        edgeTips.add(tipKey);
       }
       // New heading
       headingIndex = (headingIndex + 1) % 4;
@@ -67,9 +67,9 @@ export const traverse = (
       headingY = heading[1];
       // x,y stays the same, but nextX, nextY is different
       // After you change headings, the next character might be an obstacle
-      nextX = x + headingX
-      nextY = y + headingY
-      continue
+      nextX = x + headingX;
+      nextY = y + headingY;
+      continue;
     }
     // Change x and y for next iteration
     x = x + headingX;
@@ -96,10 +96,17 @@ if (import.meta.main) {
     } `,
   );
 
+  // Use a set for O(1) lookup of obstacle positions
   const obstaclePositions = positions(grid, "#");
-  const obstacleSet = obstaclePositions.reduce((set, position) => set.add(`${position[0]},${position[1]}`), new Set())
+  const obstacleSet = obstaclePositions.reduce(
+    (set, position) => set.add(`${position[0]},${position[1]}`),
+    new Set(),
+  );
 
   const pos = [];
+  // Go through each grid position, skipping the starting position
+  // and positions with obstacles. Place a new obstacle in the grid,
+  // and traverse and record when a loop condition exists.
   for (let row = 0; row < grid.length; row++) {
     for (let col = 0; col < grid[0].length; col++) {
       // Skip start position and positions with obstacles
@@ -110,18 +117,22 @@ if (import.meta.main) {
         continue;
       } else {
         // Create a new grid here.
-        const newGrid = grid.map((r, rowIndex) => r.map((_c, colIndex) => {
-          if (rowIndex === row && colIndex === col) {
-            return '#'
-          }
-          return grid[rowIndex][colIndex] 
-        }))
-        const result = traverse(newGrid, startPosition)
+        const newGrid = grid.map((r, rowIndex) =>
+          r.map((_c, colIndex) => {
+            if (rowIndex === row && colIndex === col) {
+              return "#";
+            }
+            return grid[rowIndex][colIndex];
+          })
+        );
+        const result = traverse(newGrid, startPosition);
         if (result.looping) {
-          pos.push([row, col])
+          pos.push([row, col]);
         }
       }
     }
   }
-  console.log(`Part 2: Found ${pos.length} obstacle positions that result in loops.`);
+  console.log(
+    `Part 2: Found ${pos.length} obstacle positions that result in loops.`,
+  );
 }
