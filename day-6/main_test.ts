@@ -21,6 +21,7 @@ Deno.test(function navigateTest() {
   assertEquals(result.visited, 41)
 })
 
+// 6,3
 const obstacle1 = `
 ....#.....
 ....+---+#
@@ -40,6 +41,7 @@ Deno.test(function loopDetectionTest1() {
   assertEquals(result.looping, true)
 })
 
+// 7, 6
 const obstacle2 = `
 ....#.....
 ....+---+#
@@ -59,6 +61,7 @@ Deno.test(function loopDetectionTest2() {
   assertEquals(result.looping, true)
 })
 
+// 7, 7
 const obstacle3 = `
 ....#.....
 ....+---+#
@@ -78,6 +81,7 @@ Deno.test(function loopDetectionTest3() {
   assertEquals(result.looping, true)
 })
 
+// 8, 1
 const obstacle4 = `
 ....#.....
 ....+---+#
@@ -97,6 +101,7 @@ Deno.test(function loopDetectionTest4() {
   assertEquals(result.looping, true)
 })
 
+// 8, 3
 const obstacle5 = `
 ....#.....
 ....+---+#
@@ -116,6 +121,7 @@ Deno.test(function loopDetectionTest5() {
   assertEquals(result.looping, true)
 })
 
+// 9, 7
 const obstacle6 = `
 ....#.....
 ....+---+#
@@ -128,9 +134,49 @@ const obstacle6 = `
 #+----++..
 ......##..
 `
-Deno.test(function loopDetectionTest6() {
+Deno.test(function loopDetectionTest7() {
   const grid = toGrid(obstacle6)
   const startPosition = positions(grid, "^").at(0)!;
   const result = traverse(grid, startPosition)
   assertEquals(result.looping, true)
+})
+
+// Straight line loop
+const obstacle7 = `
+....#.....
+.........#
+..........
+..#.#.....
+.....#.#..
+..........
+.#..^.....
+...#....#.
+#...#.....
+......#...
+`
+Deno.test(function loopDetectionStraightLine() {
+  const grid = toGrid(obstacle7)
+  const startPosition = positions(grid, "^").at(0)!;
+  const result = traverse(grid, startPosition)
+  assertEquals(result.looping, true)
+})
+
+// 5,4
+const obstacle8 = `
+....#.....
+.........#
+..........
+..#.......
+.......#..
+....#.....
+.#..^.....
+........#.
+#.........
+......#...
+`
+Deno.test(function loopDetectionRightAboveStart() {
+  const grid = toGrid(obstacle8)
+  const startPosition = positions(grid, "^").at(0)!;
+  const result = traverse(grid, startPosition)
+  assertEquals(result.looping, false)
 })
