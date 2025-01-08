@@ -5,7 +5,7 @@ export const toMatrix = (str: string, char: string) =>
 // Make an array of strings an array of numbers
 export const toNumerical = ([l, r]: string[]) => [Number(l), Number(r)];
 
-// Get a particular column of an array 
+// Get a particular column of an array
 export const getColumn = (col: number) => (row: number[]) => row[col];
 
 // Combine values from 2 arrays into pairs of values

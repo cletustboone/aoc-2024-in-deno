@@ -1,4 +1,4 @@
-import * as path from "jsr:@std/path"
+import * as path from "jsr:@std/path";
 
 export const partOne = async (file: Deno.FsFile, chunkSize = 8) => {
   let leftOver = "";

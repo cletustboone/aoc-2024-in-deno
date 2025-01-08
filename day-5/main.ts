@@ -107,8 +107,8 @@ if (import.meta.main) {
   const sumOfMiddles1 = updatesArray.filter((update) =>
     validUpdate(update, printBeforeRules, printAfterRules)
   )
-  .filter(oddsLengthOnly)
-  .reduce(addMiddles, 0)
+    .filter(oddsLengthOnly)
+    .reduce(addMiddles, 0);
   console.log(`Part 1: ${sumOfMiddles1}`);
 
   // Part 2
@@ -118,5 +118,5 @@ if (import.meta.main) {
     .filter(oddsLengthOnly)
     .map((update) => reOrderUpdate(update, printBeforeRules, printAfterRules))
     .reduce(addMiddles, 0);
-  console.log(`Part 2: ${sumOfMiddles2}`)
+  console.log(`Part 2: ${sumOfMiddles2}`);
 }

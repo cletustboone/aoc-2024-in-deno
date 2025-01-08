@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { generateArrangements, calibrator, prepareInput } from "./main.ts";
+import { calibrator, generateArrangements, prepareInput } from "./main.ts";
 
 const strInput1 = `
 190: 10 19
@@ -14,7 +14,7 @@ const strInput1 = `
 `;
 Deno.test("the string input gets properly prepared", () => {
   const result = prepareInput(strInput1);
-  assertEquals(result.length, 9)
+  assertEquals(result.length, 9);
 });
 
 Deno.test("generates 8 permutations of operators for 3 open slots", () => {
@@ -24,18 +24,18 @@ Deno.test("generates 8 permutations of operators for 3 open slots", () => {
 
 Deno.test("hanldes large numbers of slots", () => {
   const result = generateArrangements(["+", "*", "||"], 11);
-  assertEquals(result.length, 177147)
+  assertEquals(result.length, 177147);
 });
 
 Deno.test("sums outcomes that are possible", () => {
   const input = prepareInput(strInput1);
 
-  const sum = calibrator(input)
-  assertEquals(sum, 3749)
+  const sum = calibrator(input);
+  assertEquals(sum, 3749);
 });
 
 Deno.test("uses the || operator correctly", () => {
-  const input = prepareInput(strInput1)
-  const sum = calibrator(input, ["*", "+", "||"])
-  assertEquals(sum, 11387)
-})
+  const input = prepareInput(strInput1);
+  const sum = calibrator(input, ["*", "+", "||"]);
+  assertEquals(sum, 11387);
+});

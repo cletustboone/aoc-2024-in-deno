@@ -82,7 +82,7 @@ export const partTwo = (grid: string[][], word = "MAS") => {
     // Filters candidate grids that have word or reverseWord in their diagonals
     .filter((candidateGrid) => {
       // This bit is hard coded to assume that you have a 3x3 grid.
-      // And that each position in the array corrseponds 
+      // And that each position in the array corrseponds
       // to a particular direction
       const diag1 = candidateGrid[0] + candidateGrid[4] + candidateGrid[8];
       const diag2 = candidateGrid[2] + candidateGrid[4] + candidateGrid[6];

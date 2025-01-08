@@ -25,7 +25,7 @@ export const generateArrangements = (values: string[], n: number) => {
     }
 
     // Replace the current arrangements with the new ones
-    arrangements = newArrangements
+    arrangements = newArrangements;
   }
 
   return arrangements;
@@ -47,10 +47,10 @@ export const calibrator = (input: Input, operators = ["*", "+"]) =>
         if (operator === "+") {
           return acc + val;
         } else if (operator === "||") {
-          const first = String(acc)
-          const second = String(val)
-          const newVal = Number([first, second].join(""))
-          return newVal
+          const first = String(acc);
+          const second = String(val);
+          const newVal = Number([first, second].join(""));
+          return newVal;
         } else {
           return acc * val;
         }
@@ -61,11 +61,11 @@ export const calibrator = (input: Input, operators = ["*", "+"]) =>
   ).reduce((acc, val) => acc + val);
 
 if (import.meta.main) {
-  const strInput = Deno.readTextFileSync(Deno.args[0])
-  const input = prepareInput(strInput)
-  const result1 = calibrator(input)
-  console.log(`Part 1: Sum of test values: ${result1}`)
+  const strInput = Deno.readTextFileSync(Deno.args[0]);
+  const input = prepareInput(strInput);
+  const result1 = calibrator(input);
+  console.log(`Part 1: Sum of test values: ${result1}`);
 
-  const result2 = calibrator(input, ["*", "+", "||"])
-  console.log(`Part 2: Sum of test values: ${result2}`)
+  const result2 = calibrator(input, ["*", "+", "||"]);
+  console.log(`Part 2: Sum of test values: ${result2}`);
 }

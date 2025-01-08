@@ -2,9 +2,9 @@ import { assertEquals } from "@std/assert";
 import {
   addMiddles,
   afterRules,
+  beforeRules,
   oddsLengthOnly,
   reOrderUpdate,
-  beforeRules,
   toMatrix,
   validUpdate,
 } from "./main.ts";
