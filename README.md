@@ -18,5 +18,4 @@ deno --allow-read main.ts ./input-01.txt ./input-02.txt
 
 ## Disclaimer
 
-I'm not a great programmer and I didn't lean on AI/LLM solutions for these to
-keep things as human-centric as possible.
+I didn't lean on AI/LLM solutions for these to keep things as human-centric as possible.
